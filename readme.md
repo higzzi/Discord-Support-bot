@@ -21,7 +21,7 @@ This project is a Discord bot designed to provide support functionality within D
    ```
 2. Navigate to the project directory:
    ```
-   cd discord-support-bot
+   cd Discord-Support-bot
    ```
 3. Install dependencies:
    ```
