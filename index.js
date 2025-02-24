@@ -80,7 +80,7 @@ client.once('ready', async () => {
     `);
     console.log(' I am ready!');
     console.log(' Bot By Deathrow');
-    console.log(' discord.gg/Deathrow');
+    
 
     client.on('voiceStateUpdate', async (oldState, newState) => {
         const oldChannel = oldState.channel;
