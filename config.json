@@ -1,0 +1,9 @@
+{
+    "channelID": "channel id",
+    "token": "token from discord portal",
+    "mp3File": "support.mp3",
+    "timeout": 1.5,
+    "textChannelID": "text channel id",
+    "supportRoleID": "support role id ",
+    "categoryID": "voice channel id"
+}
