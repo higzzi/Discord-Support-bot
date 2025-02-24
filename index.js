@@ -78,12 +78,11 @@ client.once('ready', async () => {
     ██████╔╝███████╗██║  ██║   ██║   ██║  ██║    ██║  ██║╚██████╔╝╚███╔███╔╝
     ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝    ╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ 
     `);
-    console.log(' I am ready!');
+    console.log(' I am ready to help!');
     console.log(' Bot By Deathrow');
     
 
     client.on('voiceStateUpdate', async (oldState, newState) => {
-        const oldChannel = oldState.channel;
         const newChannel = newState.channel;
 
         if (newState.member.user.bot) {
@@ -94,7 +93,6 @@ client.once('ready', async () => {
             const textChannel = client.channels.cache.get(textChannelID);
             if (textChannel) {
                 textChannel.send(`<@&${supportRoleID}> : ${newState.member.user} is waiting for technical support. 🚨`);
-                textChannel.send(`<@&${supportRoleID}> : ${newState.member.user} في انتظار الدعم الفني. 🚨`);
             }
 
             let userCount = 0;
@@ -103,29 +101,19 @@ client.once('ready', async () => {
                 userCount += channel.members.size;
             });
 
-            const embedEnglish = new MessageEmbed()
+            const embed = new MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle('❓ Need Help?')
                 .setDescription('If you need assistance, our support team is here to help! 💡')
                 .addFields(
-                    { name: '🔊 Currently available support team members', value: `**${userCount}** people.`, inline: false },
+                    { name: '🔊 Available Support Members', value: `**${userCount}** people.`, inline: false },
                     { name: '👈 How to get help?', value: 'Click the button below to notify our support team. They will be with you shortly! ⏳', inline: false }
                 )
                 .setFooter({ text: 'Support Bot' });
 
-            const embedArabic = new MessageEmbed()
-                .setColor('#0099ff')
-                .setTitle('❓ هل تحتاج مساعدة؟')
-                .setDescription('إذا كنت بحاجة إلى مساعدة، فإن فريق الدعم لدينا هنا للمساعدة! 💡')
-                .addFields(
-                    { name: '🔊 عدد أعضاء فريق الدعم المتاحين حاليًا', value: `**${userCount}** شخصًا.`, inline: false },
-                    { name: '👈 كيفية الحصول على المساعدة؟', value: 'اضغط على الزر أدناه لإخطار فريق الدعم لدينا. سيقومون بمساعدتك قريبًا! ⏳', inline: false }
-                )
-                .setFooter({ text: 'بوت الدعم' });
-
             try {
                 await newState.member.send({ 
-                    embeds: [embedEnglish], 
+                    embeds: [embed], 
                     components: [
                         new MessageActionRow().addComponents(
                             new MessageButton()
@@ -134,18 +122,6 @@ client.once('ready', async () => {
                                 .setStyle('PRIMARY')
                         )
                     ] 
-                });
-
-                await newState.member.send({
-                    embeds: [embedArabic],
-                    components: [
-                        new MessageActionRow().addComponents(
-                            new MessageButton()
-                                .setCustomId('support_button')
-                                .setLabel('إخطار الدعم 🆘')
-                                .setStyle('PRIMARY')
-                        )
-                    ]
                 });
             } catch (error) {
                 console.error('❌ Could not send message to user:', error);
@@ -173,12 +149,8 @@ client.once('ready', async () => {
                 if (timePassed < cooldownAmount) {
                     const timeLeft = (cooldownAmount - timePassed) / 1000;
                     await interaction.reply({ 
-                        content: `🕒 Please wait ${timeLeft.toFixed(1)} seconds before notifying the support team again.`, 
+                        content: `🕒 Please wait ${timeLeft.toFixed(1)} seconds before notifying the support team again.`,
                         ephemeral: true 
-                    });
-                    await interaction.reply({
-                        content: `🕒 من فضلك انتظر ${timeLeft.toFixed(1)} ثانية قبل إخطار فريق الدعم مرة أخرى.`,
-                        ephemeral: true
                     });
                     return;
                 }
@@ -189,13 +161,8 @@ client.once('ready', async () => {
             const textChannel = client.channels.cache.get(textChannelID);
             if (textChannel) {
                 textChannel.send(`<@&${supportRoleID}>: ${interaction.user} has sent a notification to the support team. 📩`);
-                textChannel.send(`<@&${supportRoleID}>: ${interaction.user} أرسل إشعارًا إلى فريق الدعم. 📩`);
             }
             await interaction.reply({ content: '✅ A support notification has been sent!', ephemeral: true });
-            await interaction.reply({
-                content: '✅ تم إرسال إشعار الدعم!',
-                ephemeral: true
-            });
         }
     });
 });
