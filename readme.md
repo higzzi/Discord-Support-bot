@@ -17,11 +17,11 @@ This project is a Discord bot designed to provide support functionality within D
 ## Installation
 1. Clone the repository :
    ```
-   git clone https://github.com/higzzi/Discord-Support-bot.git
+   git clone https://github.com/higzzi/Support-Bot.git
    ```
 2. Navigate to the project directory:
    ```
-   cd Discord-Support-bot
+   cd Support-Bot
    ```
 3. Install dependencies:
    ```
