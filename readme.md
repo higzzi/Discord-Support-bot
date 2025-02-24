@@ -31,7 +31,7 @@ This project is a Discord bot designed to provide support functionality within D
 ## Usage
 To start the bot, run :
 ```
-npm start
+node --dns-result-order=ipv4first index.js
 ```
 
 ## License
