@@ -17,7 +17,7 @@ This project is a Discord bot designed to provide support functionality within D
 ## Installation
 1. Clone the repository :
    ```
-   git clone https://github.com/wickstudio/discord-support-bot.git
+   git clone https://github.com/higzzi/Discord-Support-bot.git
    ```
 2. Navigate to the project directory:
    ```
@@ -33,9 +33,6 @@ To start the bot, run :
 ```
 npm start
 ```
-
-## Contributing
-Contributions, issues, and feature requests are welcome. Feel free to check [issues page]([link-to-your-issues-page](https://github.com/wickstudio/Discord-Support-Bot/issues)) if you want to contribute. or join [Discord Server](https://discord.gg/wicks)
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
